@@ -226,7 +226,7 @@
             const cibiScelti = Array.from(document.querySelectorAll('input[name="cibo"]:checked')).map(el => el.value);
             const bevandeScelte = Array.from(document.querySelectorAll('input[name="bere"]:checked')).map(el => el.value);
 
-            if (cibiScelti.length === 0 && bevandeScelte.length === 0) return alert("Scegli qualcosa, scroccone!");
+            if (cibiScelti.length === 0 && bevandeScelte.length === 0) return alert("Scegli qualcosa, ciucatone!");
 
             try {
                 await addDoc(collection(db, "partecipanti"), { 
@@ -277,7 +277,7 @@
                 data: {
                     labels: Object.keys(conteggioCibo),
                     datasets: [{
-                        label: 'Pezzi di carne',
+                        label: 'Votanti',
                         data: Object.values(conteggioCibo),
                         backgroundColor: 'rgba(255, 0, 0, 0.8)', 
                         borderColor: 'black',
@@ -295,7 +295,7 @@
                 data: {
                     labels: Object.keys(conteggioBere),
                     datasets: [{
-                        label: 'Litri/Bicchieri',
+                        label: 'Votanti',
                         data: Object.values(conteggioBere),
                         backgroundColor: 'rgba(255, 204, 0, 0.8)', 
                         borderColor: 'black',
