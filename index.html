@@ -6,6 +6,7 @@
     <title>Pasquetta Devastante 2026</title>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
     
     <style>
         /* Regola d'oro per evitare che le cose escano dallo schermo su mobile */
@@ -36,11 +37,11 @@
             border: 8px dashed red; 
             border-radius: 15px;
             padding: 20px; 
-            width: 90%; /* Ridotto leggermente per far spazio all'ombra su mobile */
+            width: 90%;
             max-width: 600px; 
             margin: 20px auto; 
             color: black;
-            box-shadow: 8px 8px 0px black; /* Ombra leggermente ridotta */
+            box-shadow: 8px 8px 0px black;
         }
 
         h1 { font-size: 36px; text-shadow: 3px 3px red; margin: 10px 0; text-transform: uppercase; }
@@ -222,7 +223,6 @@
             e.preventDefault();
             const nome = document.getElementById('nome').value;
             
-            // La magia non si taglia più: prende cibi e bevande
             const cibiScelti = Array.from(document.querySelectorAll('input[name="cibo"]:checked')).map(el => el.value);
             const bevandeScelte = Array.from(document.querySelectorAll('input[name="bere"]:checked')).map(el => el.value);
 
@@ -269,22 +269,44 @@
                 bevande.forEach(item => conteggioBere[item] = (conteggioBere[item] || 0) + 1);
             });
 
+            // Opzioni Comuni per i Grafici Orizzontali
+            const chartOptions = {
+                indexAxis: 'y', // QUESTA RIGA LO RENDE ORIZZONTALE
+                responsive: true,
+                layout: {
+                    padding: { right: 30 } // Margine a destra per far respirare i numerini
+                },
+                scales: { 
+                    x: { beginAtZero: true, ticks: { stepSize: 1, font: { size: 14 } } }, // Ora la x fa i numeri
+                    y: { ticks: { font: { weight: 'bold', size: 14 }, color: 'black' } } // Ora la y fa i nomi
+                },
+                plugins: {
+                    legend: { display: false }, // Via la legenda inutile
+                    datalabels: { // Scrive il numerino alla fine della barra
+                        anchor: 'end',
+                        align: 'end',
+                        color: 'black',
+                        font: { weight: 'bold', size: 16 }
+                    }
+                }
+            };
+
             const ctxCibo = document.getElementById('ciboChart').getContext('2d');
             if (ciboChartInstance) ciboChartInstance.destroy(); 
             
             ciboChartInstance = new Chart(ctxCibo, {
                 type: 'bar',
+                plugins: [ChartDataLabels], // Attiviamo il plugin dei numerini
                 data: {
                     labels: Object.keys(conteggioCibo),
                     datasets: [{
-                        label: 'Voti',
                         data: Object.values(conteggioCibo),
                         backgroundColor: 'rgba(255, 0, 0, 0.8)', 
                         borderColor: 'black',
-                        borderWidth: 3
+                        borderWidth: 2
                     }]
                 },
-                options: { responsive: true, scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } } }
+                options: chartOptions
             });
 
             const ctxBere = document.getElementById('bereChart').getContext('2d');
@@ -292,17 +314,17 @@
             
             bereChartInstance = new Chart(ctxBere, {
                 type: 'bar',
+                plugins: [ChartDataLabels], // Attiviamo il plugin dei numerini
                 data: {
                     labels: Object.keys(conteggioBere),
                     datasets: [{
-                        label: 'Voti',
                         data: Object.values(conteggioBere),
                         backgroundColor: 'rgba(255, 204, 0, 0.8)', 
                         borderColor: 'black',
-                        borderWidth: 3
+                        borderWidth: 2
                     }]
                 },
-                options: { responsive: true, scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } } }
+                options: chartOptions
             });
         }
     </script>
