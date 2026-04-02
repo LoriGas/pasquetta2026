@@ -37,11 +37,11 @@
             border: 8px dashed red; 
             border-radius: 15px;
             padding: 20px; 
-            width: 90%;
+            width: 90%; 
             max-width: 600px; 
             margin: 20px auto; 
             color: black;
-            box-shadow: 8px 8px 0px black;
+            box-shadow: 8px 8px 0px black; 
         }
 
         h1 { font-size: 36px; text-shadow: 3px 3px red; margin: 10px 0; text-transform: uppercase; }
@@ -57,7 +57,7 @@
             box-shadow: 5px 5px 0px black;
         }
 
-        /* Form styling: font leggibile e spazi giusti */
+        /* Form styling */
         .checkbox-group { 
             text-align: left; background: white; padding: 15px; 
             border: 4px solid lime; border-radius: 10px; margin-bottom: 20px; 
@@ -90,8 +90,18 @@
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        .chart-container { background: white; padding: 10px; border: 5px solid black; border-radius: 10px; margin-bottom: 20px; font-family: Arial, sans-serif; width: 100%;}
-        canvas { max-width: 100%; }
+        /* Contenitore Grafico MAGGIORATO per dare spazio alle barre */
+        .chart-container { 
+            background: white; 
+            padding: 10px; 
+            border: 5px solid black; 
+            border-radius: 10px; 
+            margin-bottom: 20px; 
+            font-family: Arial, sans-serif; 
+            width: 100%;
+            height: 500px; /* ALTEZZA FISSA: Così non schiaccia niente */
+            position: relative;
+        }
     </style>
 </head>
 <body>
@@ -269,24 +279,34 @@
                 bevande.forEach(item => conteggioBere[item] = (conteggioBere[item] || 0) + 1);
             });
 
-            // Opzioni Comuni per i Grafici Orizzontali
+            // --- CONFIGURAZIONE MAGICA PER GRAFICO ORIZZONTALE PERFETTO ---
             const chartOptions = {
-                indexAxis: 'y', // QUESTA RIGA LO RENDE ORIZZONTALE
+                indexAxis: 'y', // Barra in orizzontale
                 responsive: true,
+                maintainAspectRatio: false, // Disabilita proporzioni fisse per usare height: 500px
                 layout: {
-                    padding: { right: 30 } // Margine a destra per far respirare i numerini
+                    padding: { right: 40 } // Spazio per non tagliare il numero a destra
                 },
                 scales: { 
-                    x: { beginAtZero: true, ticks: { stepSize: 1, font: { size: 14 } } }, // Ora la x fa i numeri
-                    y: { ticks: { font: { weight: 'bold', size: 14 }, color: 'black' } } // Ora la y fa i nomi
+                    x: { 
+                        beginAtZero: true, 
+                        ticks: { stepSize: 1, font: { size: 14, weight: 'bold' } } 
+                    },
+                    y: { 
+                        ticks: { 
+                            autoSkip: false, // OBBLIGA A MOSTRARE TUTTE LE SCRITTE A SINISTRA
+                            font: { weight: 'bold', size: 14 }, 
+                            color: 'black' 
+                        } 
+                    }
                 },
                 plugins: {
-                    legend: { display: false }, // Via la legenda inutile
-                    datalabels: { // Scrive il numerino alla fine della barra
+                    legend: { display: false },
+                    datalabels: { // Numerino affianco alla barra
                         anchor: 'end',
                         align: 'end',
                         color: 'black',
-                        font: { weight: 'bold', size: 16 }
+                        font: { weight: 'bold', size: 18 }
                     }
                 }
             };
@@ -296,7 +316,7 @@
             
             ciboChartInstance = new Chart(ctxCibo, {
                 type: 'bar',
-                plugins: [ChartDataLabels], // Attiviamo il plugin dei numerini
+                plugins: [ChartDataLabels],
                 data: {
                     labels: Object.keys(conteggioCibo),
                     datasets: [{
@@ -314,7 +334,7 @@
             
             bereChartInstance = new Chart(ctxBere, {
                 type: 'bar',
-                plugins: [ChartDataLabels], // Attiviamo il plugin dei numerini
+                plugins: [ChartDataLabels],
                 data: {
                     labels: Object.keys(conteggioBere),
                     datasets: [{
