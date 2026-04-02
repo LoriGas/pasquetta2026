@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasquetta Devastante 2026</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <style>
+        body {
+            background-color: #ff00ff;
+            color: #ffff00;
+            font-family: "Comic Sans MS", cursive;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        marquee { font-size: 30px; font-weight: bold; background: black; color: lime; padding: 10px; }
+        
+        .screen {
+            display: none;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .active { display: block; }
+
+        .container {
+            background: #00ffff; border: 8px dashed red; border-radius: 15px;
+            padding: 20px; width: 95%; max-width: 600px; margin: 20px auto; color: black;
+            box-shadow: 10px 10px 0px black;
+        }
+
+        h1 { font-size: 40px; text-shadow: 3px 3px red; margin: 10px 0; }
+        h3 { margin-bottom: 10px; font-size: 24px; text-decoration: underline; }
+
+        /* Stile GIF Ignoranti */
+        .gif-ignorante {
+            width: 100%;
+            max-width: 350px;
+            border: 5px solid yellow;
+            border-radius: 10px;
+            margin: 15px auto;
+            display: block;
+            box-shadow: 5px 5px 0px black;
+        }
+
+        /* Form styling */
+        .checkbox-group { text-align: left; background: white; padding: 15px; border: 4px solid lime; border-radius: 10px; margin-bottom: 20px; font-size: 18px; }
+        input[type="text"] { width: 90%; padding: 12px; margin: 10px 0 20px 0; font-size: 18px; border: 4px solid lime; border-radius: 10px; }
+        input[type="checkbox"] { transform: scale(1.5); margin-right: 10px; }
+        label { display: block; margin-bottom: 10px; cursor: pointer; }
+        
+        button { 
+            background: red; color: white; font-size: 26px; font-weight: bold; padding: 15px; 
+            cursor: pointer; border: 6px solid yellow; border-radius: 15px; 
+            text-transform: uppercase; width: 100%; transition: 0.1s; margin-bottom: 10px;
+        }
+        button:hover { background: yellow; color: red; transform: scale(1.02); }
+
+        /* Loader styling */
+        .loader-content { margin-top: 20vh; }
+        .spinner {
+            width: 100px; height: 100px; border: 15px solid #f3f3f3;
+            border-top: 15px solid #3498db; border-radius: 50%;
+            animation: spin 1s linear infinite; margin: 20px auto;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .chart-container { background: white; padding: 10px; border: 5px solid black; border-radius: 10px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+    <marquee scrollamount="20">🍖🍻 QUI NON SI PARLA DEL SESSO DEGLI ANGELI, QUI SI PARLA SOLO DI SESSO! PASQUETTA 2026! 🍻🍖</marquee>
+
+    <section id="screen-form" class="screen active">
+        <h1>🔥 PASQUETTA DEVASTANTE 🔥</h1>
+        
+        <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExeDB4bXlrbHZsdnJpOThzY21vdnVkaGttb2xraWR3MXdrd3oydHNtZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/QNILVIEb4WjloQ3iZj/giphy.gif" alt="Griglia" class="gif-ignorante">
+
+        <div class="container">
+            <form id="pasquettaForm">
+                <h3>Chi sei?</h3>
+
+                <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJwOHk3ZHlydW11dXF1ZTc5NTJ1eGlwNjE5dzZrdHB5cmVtMWd2aiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ScFZKpCFoTIblL4Epu/giphy.gif" alt="Bere" class="gif-ignorante" style="max-width: 250px;">
+
+                <input type="text" id="nome" required placeholder="Nome">
+
+                <h3>Cosa sbrani? 🥩</h3>
+
+                <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdXVoc3htMWRtejRuZDZ4N2NiZTA1OWE3c2pwMGN0Nno0aTJ2N3NzdCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vHpFWsPasr3uYMUCPf/giphy.gif" alt="Bere" class="gif-ignorante" style="max-width: 250px;">
+
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="cibo" value="Salsiccia"> Salsiccia</label>
+                    <label><input type="checkbox" name="cibo" value="Costine"> Costine</label>
+                    <label><input type="checkbox" name="cibo" value="Arrosticini"> Arrosticini</label>
+                    <label><input type="checkbox" name="cibo" value="Salamelle"> Salamelle</label>
+                    <label><input type="checkbox" name="cibo" value="Hamburger"> Hamburger</label>
+                    <label><input type="checkbox" name="cibo" value="Pancetta"> Pancetta</label>
+                    <label><input type="checkbox" name="cibo" value="Coppa"> Coppa</label>
+                    <label><input type="checkbox" name="cibo" value="Wurstel"> Wurstel</label>
+                </div>
+
+
+                <h3>Cosa tracanni? 🍺</h3>
+
+                <img src="https://media.giphy.com/media/Zw3oBUuOlDJ3W/giphy.gif" alt="Bere" class="gif-ignorante" style="max-width: 250px;">
+
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="bere" value="Birra"> Birra</label>
+                    <label><input type="checkbox" name="bere" value="Vino Rosso"> Vino Rosso (Ammettendo di essere comunista)</label>
+                    <label><input type="checkbox" name="bere" value="Vino Bianco"> Vino Bianco (Ammettendo di essere comunista)</label>
+                    <label><input type="checkbox" name="bere" value="Coca"> Coca</label>
+                    <label><input type="checkbox" name="bere" value="Spritz"> Spritz</label>
+                    <label><input type="checkbox" name="bere" value="Apertass"> Apertass</label>
+                    <label><input type="checkbox" name="bere" value="Acqua Naturale"> Acqua Naturale</label>
+                    <label><input type="checkbox" name="bere" value="Acqua Frizzante"> Acqua Frizzante</label>
+                    <label><input type="checkbox" name="bere" value="Estathe Limone"> Estathe Limone</label>
+                    <label><input type="checkbox" name="bere" value="Estathe Pesca"> Estathe Pesca</label>
+                    <label><input type="checkbox" name="bere" value="Fanta"> Fanta</label>
+                    <label><input type="checkbox" name="bere" value="Sprite"> Sprite</label>
+                </div>
+
+                <button type="submit">INVIA O STAI A CASA 🚀</button>
+            </form>
+            <button onclick="vaiAlGrafico()" style="background: blue; font-size: 18px;">📊 SOLO RISULTATI</button>
+        </div>
+    </section>
+
+    <section id="screen-loader-1" class="screen">
+        <div class="loader-content">
+            <h1 id="testo-loader-1">Mandando Miriam e Sofia a studiare all'estero...</h1>
+            <div class="spinner"></div>
+            <img src="https://media.giphy.com/media/ne3xrYlWtQFtC/giphy.gif" class="gif-ignorante">
+        </div>
+    </section>
+
+    <section id="screen-loader-2" class="screen">
+        <div class="loader-content">
+            <h1>Pippando cocaina dal culo di qualcuno</h1>
+            <div class="spinner" style="border-top-color: red;"></div>
+            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcng2c2JvaTVwMGJicDFob3llbTRiZjNvODF2ZzcxMjZreXVmaDRxMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Mx936qy6jLxyjbqTiR/giphy.gif" class="gif-ignorante">
+        </div>
+    </section>
+
+    <section id="screen-chart" class="screen">
+        <h1>📊 RESOCONTO DEVASTO 📊</h1>
+        
+        <img src="https://media.giphy.com/media/g9582DNuQppxC/giphy.gif" alt="Cin Cin" class="gif-ignorante">
+
+        <div class="container">
+            
+            <h3>🥩 REPARTO MACELLERIA 🥩</h3>
+            <div class="chart-container">
+                <canvas id="ciboChart"></canvas>
+            </div>
+
+            <hr style="border: 3px solid black; margin: 30px 0;">
+
+            <h3>🍺 REPARTO BEVANDE 🍺</h3>
+            <div class="chart-container">
+                <canvas id="bereChart"></canvas>
+            </div>
+
+            <button onclick="location.reload()" style="margin-top: 20px; background: lime; color: black;">🔙 TORNA INDIETRO</button>
+        </div>
+    </section>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBfQGXUSC66V3fnWLjdMQu3bAHMrUdX8Jo",
+            authDomain: "grigliata-57987.firebaseapp.com",
+            projectId: "grigliata-57987",
+            storageBucket: "grigliata-57987.firebasestorage.app",
+            messagingSenderId: "63547767144",
+            appId: "1:63547767144:web:de4760f7d9283c6a3f7edd",
+            measurementId: "G-MMX8NKJWES"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        function showScreen(screenId) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(screenId).classList.add('active');
+            window.scrollTo(0,0);
+        }
+
+        window.vaiAlGrafico = async () => {
+            showScreen('screen-chart');
+            await caricaGrafico();
+        };
+
+        document.getElementById('pasquettaForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const nome = document.getElementById('nome').value;
+            
+            const cibiScelti = Array.from(document.querySelectorAll('input[name="cibo"]:checked')).map(el => el.value);
+            const bevandeScelte = Array.from(document.querySelectorAll('input[name="bere"]:checked')).map(el => el.value);
+
+            if (cibiScelti.length === 0 && bevandeScelte.length === 0) return alert("Scegli qualcosa, scroccone!");
+
+            try {
+                await addDoc(collection(db, "partecipanti"), { 
+                    nome: nome, 
+                    cibo: cibiScelti, 
+                    bere: bevandeScelte 
+                });
+
+                showScreen('screen-loader-1');
+                
+                setTimeout(() => {
+                    showScreen('screen-loader-2');
+                    
+                    setTimeout(() => {
+                        window.vaiAlGrafico();
+                    }, 3500);
+
+                }, 3500);
+
+            } catch (err) {
+                alert("Errore: " + err.message);
+            }
+        });
+
+        let ciboChartInstance, bereChartInstance;
+        
+        async function caricaGrafico() {
+            const querySnapshot = await getDocs(collection(db, "partecipanti"));
+            
+            const conteggioCibo = {};
+            const conteggioBere = {};
+
+            querySnapshot.forEach(doc => {
+                const dati = doc.data();
+                
+                const cibi = dati.cibo || [];
+                const bevande = dati.bere || [];
+
+                cibi.forEach(item => conteggioCibo[item] = (conteggioCibo[item] || 0) + 1);
+                bevande.forEach(item => conteggioBere[item] = (conteggioBere[item] || 0) + 1);
+            });
+
+            const ctxCibo = document.getElementById('ciboChart').getContext('2d');
+            if (ciboChartInstance) ciboChartInstance.destroy(); 
+            
+            ciboChartInstance = new Chart(ctxCibo, {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(conteggioCibo),
+                    datasets: [{
+                        label: 'Pezzi di carne',
+                        data: Object.values(conteggioCibo),
+                        backgroundColor: 'rgba(255, 0, 0, 0.8)', 
+                        borderColor: 'black',
+                        borderWidth: 3
+                    }]
+                },
+                options: { responsive: true, scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } } }
+            });
+
+            const ctxBere = document.getElementById('bereChart').getContext('2d');
+            if (bereChartInstance) bereChartInstance.destroy();
+            
+            bereChartInstance = new Chart(ctxBere, {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(conteggioBere),
+                    datasets: [{
+                        label: 'Litri/Bicchieri',
+                        data: Object.values(conteggioBere),
+                        backgroundColor: 'rgba(255, 204, 0, 0.8)', 
+                        borderColor: 'black',
+                        borderWidth: 3
+                    }]
+                },
+                options: { responsive: true, scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } } }
+            });
+        }
+    </script>
+</body>
+</html>
